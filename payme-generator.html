@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLYVE PayMe — Page Generator</title>
+<meta name="description" content="Turn your KLYVE address into a shareable payment page in one minute.">
+<style>
+  :root{--navy:#0F172A;--navy2:#1E293B;--emerald:#10B981;--white:#F8FAFC;--muted:#94A3B8;--border:#334155;--danger:#F87171;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--white);line-height:1.6;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  nav{padding:20px 0;}
+  .logo{font-size:20px;font-weight:700;}
+  .logo span{color:var(--emerald);}
+  .head{padding:24px 0 8px;text-align:center;}
+  .head h1{font-size:clamp(26px,4.5vw,38px);font-weight:800;}
+  .head h1 em{font-style:normal;color:var(--emerald);}
+  .head p{color:var(--muted);margin-top:8px;}
+  .grid{display:grid;grid-template-columns:400px 1fr;gap:28px;padding:24px 0 48px;}
+  @media(max-width:860px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:26px;}
+  .card h2{font-size:16px;margin-bottom:18px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px;}
+  .field input{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:10px;background:var(--navy);color:var(--white);font-size:15px;}
+  .field input:focus{outline:2px solid var(--emerald);outline-offset:-1px;}
+  .field .err{color:var(--danger);font-size:12px;margin-top:4px;display:none;}
+  .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  .btn{display:block;width:100%;background:var(--emerald);color:#06251B;font-weight:700;padding:14px;border-radius:10px;border:none;font-size:16px;cursor:pointer;margin-top:8px;}
+  .btn:hover{background:#34D399;}
+  .btn2{display:block;width:100%;background:transparent;color:var(--white);border:1px solid var(--border);font-weight:600;padding:13px;border-radius:10px;font-size:15px;cursor:pointer;margin-top:10px;}
+  .btn2:hover{border-color:var(--emerald);}
+  .hint{font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
+  .demo-badge{display:inline-block;background:rgba(248,113,113,.12);border:1px solid var(--danger);color:var(--danger);font-size:12px;font-weight:600;padding:3px 12px;border-radius:999px;margin-bottom:12px;}
+  iframe{width:100%;height:640px;border:1px solid var(--border);border-radius:16px;background:#fff;}
+
+  .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:14px;}
+  .navlinks a:hover{color:var(--white);}
+  .navlinks a.navcta{color:#06251B;background:var(--emerald);padding:9px 18px;border-radius:8px;font-weight:700;}
+  .navlinks a.navcta:hover{opacity:.9;color:#06251B;}
+  @media(max-width:760px){.navlinks{gap:14px;}.navlinks a{font-size:13px;}}
+</style>
+</head>
+<body>
+<nav class="wrap">
+  <a href="index.html" style="text-decoration:none;color:inherit;"><div class="logo" style="display:inline;">KLYVE<span style="color:var(--emerald);">.</span></div></a>
+  <div class="navlinks">
+    <a href="spend-crypto.html">Spend crypto</a>
+    <a href="remittance.html">Send money home</a>
+    <a href="fee-savings.html">Fee savings</a>
+    <a href="franchise.html">Franchise</a>
+    <a href="merchant-calculator.html" class="navcta">Pay calculator</a>
+  </div>
+</nav>
+
+<header class="head wrap">
+  <h1>Your payment page, <em>in one minute</em>.</h1>
+  <p>Fill this in once — get a shareable page with your QR, your amounts, ready to host free.</p>
+</header>
+
+<main class="wrap grid">
+  <div class="card">
+    <h2>Your details</h2>
+    <div class="field">
+      <label>Your name or business</label>
+      <input id="gName" type="text" value="Alex Rivera" maxlength="40">
+    </div>
+    <div class="field">
+      <label>Your TRON (TRC-20) USDT address</label>
+      <input id="gAddr" type="text" value="TDemoKlyvePayAddress123456789ABCDe" spellcheck="false" style="font-family:ui-monospace,monospace;font-size:13px;">
+      <div class="err" id="addrErr">Must be a valid TRON address: starts with T, 34 base58 characters.</div>
+    </div>
+    <div class="field">
+      <label>What do you do? (one line, shown on your page)</label>
+      <input id="gTag" type="text" value="Design & branding — invoices in USDT welcome" maxlength="80">
+    </div>
+    <div class="field">
+      <label>Three typical amounts (£)</label>
+      <div class="three">
+        <input id="gA1" type="number" value="25" min="1">
+        <input id="gA2" type="number" value="50" min="1">
+        <input id="gA3" type="number" value="100" min="1">
+      </div>
+    </div>
+    <div class="three">
+      <div class="field">
+        <label>Rate (£ / 1 USDT)</label>
+        <input id="gRate" type="number" value="0.7390" min="0" step="0.0001">
+      </div>
+      <div class="field">
+        <label>Fee %</label>
+        <input id="gFee" type="number" value="4" min="0" max="99" step="0.5">
+      </div>
+      <div class="field">
+        <label>Mode</label>
+        <input id="gMode" type="text" value="invoice" disabled style="color:var(--muted);">
+      </div>
+    </div>
+    <button class="btn" id="genBtn">Generate my page</button>
+    <button class="btn2" id="dlBtn">Download page (HTML)</button>
+    <div class="hint">Host the downloaded file free on Vercel or Netlify — same as the calculator.</div>
+  </div>
+
+  <div>
+    <div id="demoNote"><span class="demo-badge">DEMO ADDRESS — replace with your real address before using</span></div>
+    <iframe id="preview" title="PayMe preview"></iframe>
+  </div>
+</main>
+
+<script>
+var DEMO = 'TDemoKlyvePayAddress123456789ABCDe';
+
+function g(id){ return document.getElementById(id); }
+function val(id){ return g(id).value.trim(); }
+
+function validAddr(a){ return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(a); }
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function buildPage(){
+  var name=val('gName')||'Your name';
+  var addr=val('gAddr');
+  var tag=val('gTag');
+  var a=[parseFloat(val('gA1'))||25, parseFloat(val('gA2'))||50, parseFloat(val('gA3'))||100];
+  var rate=parseFloat(val('gRate'))||0.7390;
+  var fee=parseFloat(val('gFee'))||4;
+  var isDemo = addr===DEMO;
+
+  var page = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">'
+  + '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+  + '<title>Pay '+esc(name)+' — USDT (TRC-20)</title>'
+  + '<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"><\/script>'
+  + '<style>'
+  + '*{margin:0;padding:0;box-sizing:border-box;}'
+  + 'body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#0F172A;color:#F8FAFC;min-height:100vh;display:flex;justify-content:center;padding:24px 16px;}'
+  + '.card{max-width:420px;width:100%;background:#1E293B;border:1px solid #334155;border-radius:20px;padding:32px 24px;text-align:center;}'
+  + '.avatar{width:64px;height:64px;border-radius:50%;background:#10B981;color:#06251B;font-size:26px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}'
+  + 'h1{font-size:24px;font-weight:800;}'
+  + '.tag{color:#94A3B8;font-size:14px;margin:6px 0 20px;}'
+  + '.pills{display:flex;gap:10px;justify-content:center;margin-bottom:14px;}'
+  + '.pill{padding:10px 0;width:88px;border:1px solid #334155;border-radius:10px;background:transparent;color:#F8FAFC;font-size:15px;font-weight:600;cursor:pointer;font:inherit;}'
+  + '.pill.on{border-color:#10B981;background:rgba(16,185,129,.12);}'
+  + '.custom{display:flex;gap:8px;margin-bottom:18px;}'
+  + '.custom input{flex:1;padding:11px 13px;border:1px solid #334155;border-radius:10px;background:#0F172A;color:#F8FAFC;font-size:15px;font:inherit;}'
+  + '.amt{font-size:36px;font-weight:800;color:#10B981;font-variant-numeric:tabular-nums;}'
+  + '.amtl{font-size:12px;color:#94A3B8;margin-bottom:16px;}'
+  + '#qrbox{width:180px;height:180px;margin:0 auto 10px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;}'
+  + '#qrbox img,#qrbox canvas{width:160px!important;height:160px!important;}'
+  + '.addr{font-family:ui-monospace,monospace;font-size:12px;color:#94A3B8;word-break:break-all;margin-bottom:6px;}'
+  + '.copy{background:none;border:1px solid #334155;color:#F8FAFC;border-radius:8px;padding:8px 16px;font-size:13px;cursor:pointer;font:inherit;margin-bottom:16px;}'
+  + '.ref{width:100%;padding:11px 13px;border:1px solid #334155;border-radius:10px;background:#0F172A;color:#F8FAFC;font-size:14px;margin-bottom:14px;font:inherit;}'
+  + '.warn{border:1px solid #F59E0B;background:rgba(245,158,11,.08);color:#FBBF24;font-size:13px;border-radius:10px;padding:12px;margin-bottom:16px;}'
+  + '.pay{width:100%;background:#10B981;color:#06251B;font-weight:700;padding:14px;border:none;border-radius:10px;font-size:16px;cursor:pointer;font:inherit;}'
+  + '.demo{margin-top:16px;border:1px solid #F87171;color:#F87171;font-size:12px;border-radius:8px;padding:8px;}'
+  + '.foot{margin-top:22px;font-size:12px;color:#64748B;}'
+  + '.foot a{color:#10B981;}'
+  + '<\/style><\/head><body><div class="card">'
+  + '<div class="avatar">'+esc(name.charAt(0).toUpperCase())+'</div>'
+  + '<h1>'+esc(name)+'</h1>'
+  + '<div class="tag">'+esc(tag)+'</div>'
+  + '<div class="pills">'
+  + a.map(function(x,i){return '<button class="pill'+(i===0?' on':'')+'" data-gbp="'+x+'">&pound;'+x+'</button>';}).join('')
+  + '<\/div>'
+  + '<div class="custom"><input id="custom" type="number" min="1" placeholder="Custom £ amount"><\/div>'
+  + '<div class="amt" id="usdt">—<\/div>'
+  + '<div class="amtl">USDT to send &middot; includes all fees<\/div>'
+  + '<div id="qrbox"><div style="color:#0F172A;font-size:12px;padding:8px;">QR loads when hosted online<\/div><\/div>'
+  + '<div class="addr" id="addrTxt"><\/div>'
+  + '<button class="copy" id="copyAddr">Copy address<\/button>'
+  + '<input class="ref" id="ref" type="text" placeholder="Reference / invoice no. (optional)" maxlength="32">'
+  + '<div class="warn">Send on the <b>TRON network (TRC-20) only<\/b> — sending on any other network will result in lost funds.<\/div>'
+  + '<button class="pay" id="copyQuote">Copy payment message<\/button>'
+  + (isDemo ? '<div class="demo">DEMO PAGE — this address cannot receive real payments.<\/div>' : '')
+  + '<div class="foot">Powered by <a href="#">KLYVE<\/a> — get your own free PayMe page<\/div>'
+  + '<\/div><script>'
+  + 'var ADDR="'+addr+'",RATE='+rate+',FEE='+fee+';'
+  + 'var gbp='+(a[0])+';'
+  + 'function $(id){return document.getElementById(id);}'
+  + 'function calc(){'
+  + ' var exact=gbp/(1-FEE/100)/RATE;'
+  + ' var usdt=Math.ceil(exact/0.5)*0.5;'
+  + ' $("usdt").textContent=usdt.toFixed(1)+" USDT";'
+  + ' var ref=$("ref").value.replace(/[^A-Za-z0-9-]/g,"").slice(0,32);'
+  + ' var uri="tron:"+ADDR+"?amount="+usdt.toFixed(1)+"&token=USDT"+(ref?"&memo="+ref:"");'
+  + ' var q=$("qrbox");q.innerHTML="";'
+  + ' if(window.QRCode){new QRCode(q,{text:uri,width:160,height:160});}else{q.innerHTML="<div style=\\"color:#0F172A;font-size:12px;padding:8px;\\">"+uri+"<\\/div>";}'
+  + ' $("addrTxt").textContent=ADDR.slice(0,6)+"..."+ADDR.slice(-4);'
+  + ' window.__quote="Total: "+usdt.toFixed(1)+" USDT (TRC-20) to: "+ADDR+(ref?". Ref: "+ref:"")+". Send on TRON network only — pay exactly "+usdt.toFixed(1)+" USDT plus ~1 USDT network fee.";'
+  + '}'
+  + 'document.querySelectorAll(".pill").forEach(function(p){p.addEventListener("click",function(){'
+  + ' document.querySelectorAll(".pill").forEach(function(x){x.classList.remove("on");});'
+  + ' p.classList.add("on");gbp=parseFloat(p.dataset.gbp);$("custom").value="";calc();});});'
+  + '$("custom").addEventListener("input",function(){'
+  + ' var v=parseFloat(this.value);if(v>0){gbp=v;document.querySelectorAll(".pill").forEach(function(x){x.classList.remove("on");});calc();}});'
+  + '$("ref").addEventListener("input",calc);'
+  + '$("copyAddr").addEventListener("click",function(){navigator.clipboard&&navigator.clipboard.writeText(ADDR);this.textContent="Copied";var b=this;setTimeout(function(){b.textContent="Copy address";},1500);});'
+  + '$("copyQuote").addEventListener("click",function(){navigator.clipboard&&navigator.clipboard.writeText(window.__quote);this.textContent="Copied to clipboard";var b=this;setTimeout(function(){b.textContent="Copy payment message";},1500);});'
+  + 'calc();'
+  + '<\/script><\/body><\/html>';
+  return page;
+}
+
+function refresh(){
+  var addr=val('gAddr');
+  var ok=validAddr(addr);
+  g('addrErr').style.display=ok?'none':'block';
+  g('demoNote').style.display=(addr===DEMO)?'block':'none';
+  g('preview').srcdoc=buildPage();
+}
+
+g('genBtn').addEventListener('click',function(){
+  refresh();
+  document.getElementById('preview').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+g('dlBtn').addEventListener('click',function(){
+  var addr=val('gAddr');
+  if(!validAddr(addr)){ g('addrErr').style.display='block'; return; }
+  var blob=new Blob([buildPage()],{type:'text/html'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='payme-'+(val('gName').toLowerCase().replace(/[^a-z0-9]+/g,'-')||'klyve')+'.html';
+  document.body.appendChild(a);a.click();a.remove();
+});
+
+refresh();
+</script>
+
+<div style="max-width:900px;margin:0 auto;padding:28px 24px;text-align:center;border-top:1px solid #334155;">
+  <div style="display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;font-size:13px;">
+    <a href="index.html" style="color:#94A3B8;text-decoration:none;">Merchants</a>
+    <a href="spend-crypto.html" style="color:#94A3B8;text-decoration:none;">Spend crypto anywhere</a>
+    <a href="remittance.html" style="color:#94A3B8;text-decoration:none;">Send money home</a>
+    <a href="fee-savings.html" style="color:#94A3B8;text-decoration:none;">Merchant fee savings</a>
+    <a href="merchant-calculator.html" style="color:#94A3B8;text-decoration:none;">Merchant pay calculator</a>
+    <a href="payme-generator.html" style="color:#94A3B8;text-decoration:none;">PayMe generator</a>
+    <a href="open-loop.html" style="color:#94A3B8;text-decoration:none;">The open loop</a>
+    <a href="franchise.html" style="color:#94A3B8;text-decoration:none;">Franchise opportunity</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLYVE Merchant — Fee Savings Calculator</title>
+<meta name="description" content="See how much card processing fees, chargebacks and FX markups are costing your business every year — and what you'd save with KLYVE.">
+<style>
+  :root{--navy:#0F172A;--navy2:#1E293B;--emerald:#10B981;--white:#F8FAFC;--muted:#94A3B8;--border:#334155;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--white);line-height:1.6;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  nav{padding:20px 0;display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-size:20px;font-weight:700;}
+  .logo span{color:var(--emerald);}
+  a.back{color:var(--muted);text-decoration:none;font-size:14px;}
+  .hero{padding:40px 0 32px;text-align:center;}
+  .hero h1{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.15;}
+  .hero h1 em{font-style:normal;color:var(--emerald);}
+  .hero p{color:var(--muted);max-width:560px;margin:12px auto 0;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-bottom:24px;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+  .card{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:28px;}
+  .card h2{font-size:17px;margin-bottom:20px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;}
+  .field input,.field select{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--navy);color:var(--white);font-size:16px;font-variant-numeric:tabular-nums;}
+  .field input:focus,.field select:focus{outline:2px solid var(--emerald);outline-offset:-1px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .big-num{font-size:clamp(40px,7vw,56px);font-weight:800;color:var(--emerald);line-height:1.1;font-variant-numeric:tabular-nums;}
+  .big-label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+  .line{display:flex;justify-content:space-between;font-size:15px;color:var(--muted);padding:9px 0;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums;}
+  .line:last-child{border-bottom:none;}
+  .line b{font-weight:600;color:var(--white);}
+  .line.total{border-top:2px solid var(--border);margin-top:4px;padding-top:14px;font-size:17px;}
+  .line.total b{color:var(--emerald);}
+  .save-badge{display:inline-block;background:rgba(16,185,129,.12);border:1px solid var(--emerald);color:var(--emerald);font-weight:700;font-size:14px;padding:8px 18px;border-radius:999px;margin-top:16px;}
+  .cta{text-align:center;padding:24px 0 72px;}
+  .btn{display:inline-block;background:var(--emerald);color:#06251B;font-weight:700;padding:15px 34px;border-radius:10px;text-decoration:none;font-size:16px;}
+  .btn:hover{background:#34D399;}
+  .disclaimer{text-align:center;color:var(--muted);font-size:12px;padding:0 24px 32px;max-width:640px;margin:0 auto;}
+
+  .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:14px;}
+  .navlinks a:hover{color:var(--white);}
+  .navlinks a.navcta{color:#06251B;background:var(--emerald);padding:9px 18px;border-radius:8px;font-weight:700;}
+  .navlinks a.navcta:hover{opacity:.9;color:#06251B;}
+  @media(max-width:760px){.navlinks{gap:14px;}.navlinks a{font-size:13px;}}
+</style>
+</head>
+<body>
+<nav class="wrap">
+  <a href="index.html" style="text-decoration:none;color:inherit;"><div class="logo" style="display:inline;">KLYVE<span style="color:var(--emerald);">.</span></div></a>
+  <div class="navlinks">
+    <a href="spend-crypto.html">Spend crypto</a>
+    <a href="remittance.html">Send money home</a>
+    <a href="fee-savings.html">Fee savings</a>
+    <a href="franchise.html">Franchise</a>
+    <a href="merchant-calculator.html" class="navcta">Pay calculator</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <h1>How much are card fees <em>really</em> costing you?</h1>
+  <p>Enter your numbers below. Most merchants are shocked — fees, chargebacks and FX markups quietly take 3–6% of everything they sell.</p>
+</header>
+
+<main class="wrap grid">
+  <div class="card">
+    <h2>Your business today</h2>
+    <div class="field">
+      <label>Monthly card turnover (£)</label>
+      <input id="turnover" type="number" value="5000" min="0" step="100">
+    </div>
+    <div class="two">
+      <div class="field">
+        <label>Provider</label>
+        <select id="provider">
+          <option value="1.5">Stripe (1.5%)</option>
+          <option value="1.75">Square (1.75%)</option>
+          <option value="2.9">PayPal (2.9% + 30p)</option>
+          <option value="2.5">Worldpay / typical ISO (2.5%)</option>
+          <option value="3.5">High-risk processor (3.5%)</option>
+          <option value="custom">Custom %</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Custom fee %</label>
+        <input id="customFee" type="number" value="2.0" min="0" max="20" step="0.1">
+      </div>
+    </div>
+    <div class="field">
+      <label>Average transaction (£)</label>
+      <input id="avgTx" type="number" value="45" min="0" step="1">
+    </div>
+    <div class="two">
+      <div class="field">
+        <label>Chargebacks per month</label>
+        <input id="chargebacks" type="number" value="2" min="0" step="1">
+      </div>
+      <div class="field">
+        <label>% of sales international</label>
+        <input id="intlPct" type="number" value="15" min="0" max="100" step="5">
+      </div>
+    </div>
+    <div class="field">
+      <label>Monthly fixed costs (£ — terminal rental, PCI, statement fees)</label>
+      <input id="fixedCosts" type="number" value="25" min="0" step="5">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="big-label">Your annual savings with KLYVE</div>
+    <div class="big-num" id="savings">£0</div>
+    <div class="save-badge" id="pctSaved">—</div>
+    <div style="margin-top:20px;">
+      <div class="line"><span>Card processing fees (annual)</span><b id="cFees">—</b></div>
+      <div class="line"><span>Chargeback losses (fees + lost goods)</span><b id="cCharge">—</b></div>
+      <div class="line"><span>FX markups on international sales</span><b id="cFx">—</b></div>
+      <div class="line"><span>Monthly fixed costs (annual)</span><b id="cFixed">—</b></div>
+      <div class="line total"><span>Total cost today</span><b id="cTotal">—</b></div>
+      <div class="line"><span>KLYVE at 4% of turnover</span><b id="kCost">—</b></div>
+    </div>
+  </div>
+</main>
+
+<div class="cta wrap">
+  <a class="btn" href="merchant-calculator.html">Start saving — get your KLYVE address</a>
+</div>
+
+<p class="disclaimer">Estimates only. Chargeback losses assume a £20 dispute fee plus the lost goods (average order value). FX markups assume a typical 2.5% spread on international card sales. KLYVE cost shown as 4% of total turnover received in USDT, plus negligible network fees.</p>
+
+<script>
+(function(){
+  var ids=['turnover','provider','customFee','avgTx','chargebacks','intlPct','fixedCosts'];
+  function g(id){return document.getElementById(id);}
+  function money(n){return '£'+Math.round(n).toLocaleString('en-GB');}
+  function calc(){
+    var turnover=parseFloat(g('turnover').value)||0;
+    var prov=g('provider').value;
+    var feePct=prov==='custom'?(parseFloat(g('customFee').value)||0):parseFloat(prov);
+    var avgTx=parseFloat(g('avgTx').value)||0;
+    var cb=parseFloat(g('chargebacks').value)||0;
+    var intl=(parseFloat(g('intlPct').value)||0)/100;
+    var fixed=(parseFloat(g('fixedCosts').value)||0)*12;
+    var annual=turnover*12;
+    var fees=annual*feePct/100;
+    if(prov==='2.9'){ // PayPal 30p per transaction
+      var txs=avgTx>0?annual/avgTx:0;
+      fees+=txs*0.30;
+    }
+    var charge=cb*12*(20+avgTx); // £20 dispute fee + lost goods
+    var fx=annual*intl*0.025;
+    var total=fees+charge+fx+fixed;
+    var klyve=annual*0.04;
+    var save=total-klyve;
+    g('cFees').textContent=money(fees);
+    g('cCharge').textContent=money(charge);
+    g('cFx').textContent=money(fx);
+    g('cFixed').textContent=money(fixed);
+    g('cTotal').textContent=money(total);
+    g('kCost').textContent=money(klyve);
+    if(save>0){
+      g('savings').textContent=money(save);
+      g('pctSaved').textContent='≈ '+(save/total*100).toFixed(1)+'% of your current costs gone';
+      g('savings').style.color='';
+    } else {
+      g('savings').textContent='£0';
+      g('pctSaved').textContent='Card processing may currently cost you less';
+    }
+  }
+  ids.forEach(function(id){g(id).addEventListener('input',calc);});
+  calc();
+})();
+</script>
+
+<div style="max-width:900px;margin:0 auto;padding:28px 24px;text-align:center;border-top:1px solid #334155;">
+  <div style="display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;font-size:13px;">
+    <a href="index.html" style="color:#94A3B8;text-decoration:none;">Merchants</a>
+    <a href="spend-crypto.html" style="color:#94A3B8;text-decoration:none;">Spend crypto anywhere</a>
+    <a href="remittance.html" style="color:#94A3B8;text-decoration:none;">Send money home</a>
+    <a href="fee-savings.html" style="color:#94A3B8;text-decoration:none;">Merchant fee savings</a>
+    <a href="merchant-calculator.html" style="color:#94A3B8;text-decoration:none;">Merchant pay calculator</a>
+    <a href="payme-generator.html" style="color:#94A3B8;text-decoration:none;">PayMe generator</a>
+    <a href="open-loop.html" style="color:#94A3B8;text-decoration:none;">The open loop</a>
+    <a href="franchise.html" style="color:#94A3B8;text-decoration:none;">Franchise opportunity</a>
+  </div>
+</div>
+</body>
+</html>

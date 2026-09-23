@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLYVE — National & Regional Distribution Opportunity</title>
+<meta name="description" content="Exclusive national and regional franchise rights for KLYVE: the open-loop crypto card and merchant payment platform, built on regulated white-label payment infrastructure.">
+<style>
+  :root{--navy:#0F172A;--navy2:#1E293B;--emerald:#10B981;--white:#F8FAFC;--muted:#94A3B8;--border:#334155;--gold:#F59E0B;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--white);line-height:1.65;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .btn{display:inline-block;background:var(--emerald);color:#06251B;font-weight:700;padding:14px 30px;border-radius:10px;text-decoration:none;font-size:16px;}
+  .btn:hover{background:#34D399;}
+  .btn-ghost{display:inline-block;border:1px solid var(--border);color:var(--white);padding:14px 30px;border-radius:10px;text-decoration:none;font-size:16px;margin-left:12px;}
+  .btn-ghost:hover{border-color:var(--emerald);}
+  nav{padding:20px 0;display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-size:20px;font-weight:700;}
+  .logo span{color:var(--emerald);}
+  .hero{padding:56px 0 48px;text-align:center;}
+  .pill{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:13px;font-weight:600;padding:6px 16px;border-radius:999px;margin-bottom:20px;}
+  .hero h1{font-size:clamp(30px,5.5vw,48px);font-weight:800;line-height:1.12;max-width:780px;margin:0 auto 18px;}
+  .hero h1 em{font-style:normal;color:var(--emerald);}
+  .hero p{color:var(--muted);font-size:clamp(15px,2.3vw,18px);max-width:660px;margin:0 auto 32px;}
+  section{padding:56px 0;border-top:1px solid var(--border);}
+  .kicker{color:var(--emerald);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;text-align:center;}
+  h2{font-size:clamp(24px,4vw,34px);font-weight:800;text-align:center;margin:0 auto 14px;line-height:1.15;}
+  .sub{color:var(--muted);text-align:center;max-width:640px;margin:0 auto 36px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:700px){.grid{grid-template-columns:1fr;}}
+  .box{background:var(--navy2);border:1px solid var(--border);border-radius:14px;padding:24px;}
+  .box h3{font-size:16px;margin-bottom:10px;}
+  .box h3::before{content:"✓";color:var(--emerald);font-weight:800;margin-right:8px;}
+  .box.plain h3::before{content:none;}
+  .box p,.box li{font-size:14px;color:var(--muted);}
+  .box ul{list-style:none;}
+  .box li{padding:6px 0;border-bottom:1px solid var(--border);}
+  .box li:last-child{border:none;}
+  .box b{color:var(--white);font-weight:600;}
+  .rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .rev .box{text-align:center;}
+  .rev .n{font-size:30px;font-weight:800;color:var(--emerald);font-variant-numeric:tabular-nums;}
+  .rev .l{font-size:13px;color:var(--muted);margin-top:4px;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th,td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--border);}
+  th{color:var(--muted);font-weight:600;font-size:13px;}
+  td b{color:var(--white);font-weight:600;}
+  td{color:var(--muted);}
+  .tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+  .tier{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:26px;text-align:center;}
+  .tier.gold{border-color:var(--gold);}
+  .tier h3{font-size:18px;margin-bottom:6px;}
+  .tier .who{font-size:13px;color:var(--muted);margin-bottom:16px;}
+  .tier ul{list-style:none;text-align:left;font-size:14px;color:var(--muted);}
+  .tier li{padding:6px 0;}
+  .tier li::before{content:"—";color:var(--emerald);margin-right:8px;}
+  .cta{background:linear-gradient(135deg,#064E3B,#0F172A);border:1px solid var(--emerald);border-radius:24px;padding:52px 28px;text-align:center;margin:56px 0;}
+  .cta p{color:var(--muted);margin:10px 0 26px;}
+  .disc{color:var(--muted);font-size:12px;text-align:center;padding:0 24px 40px;max-width:720px;margin:0 auto;}
+  footer{padding:32px 0;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--border);}
+  @media(max-width:700px){.btn-ghost{margin-left:0;margin-top:12px;display:block;}}
+
+  .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:14px;}
+  .navlinks a:hover{color:var(--white);}
+  .navlinks a.navcta{color:#06251B;background:var(--emerald);padding:9px 18px;border-radius:8px;font-weight:700;}
+  .navlinks a.navcta:hover{opacity:.9;color:#06251B;}
+  @media(max-width:760px){.navlinks{gap:14px;}.navlinks a{font-size:13px;}}
+</style>
+</head>
+<body>
+
+<nav class="wrap">
+  <a href="index.html" style="text-decoration:none;color:inherit;"><div class="logo" style="display:inline;">KLYVE<span style="color:var(--emerald);">.</span></div></a>
+  <div class="navlinks">
+    <a href="spend-crypto.html">Spend crypto</a>
+    <a href="remittance.html">Send money home</a>
+    <a href="fee-savings.html">Fee savings</a>
+    <a href="franchise.html">Franchise</a>
+    <a href="merchant-calculator.html" class="navcta">Pay calculator</a>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="pill">Exclusive territories &middot; Limited availability</div>
+  <h1>Own the open loop in <em>your country</em>.</h1>
+  <p>KLYVE is a complete, working crypto payments business — consumer card, merchant acceptance, and a full marketing toolkit — built on regulated white-label payment infrastructure. We are appointing dedicated national and regional partners to build it, brand it, and grow it in their markets.</p>
+  <a href="#model" class="btn">See the opportunity</a>
+  <a href="#stack" class="btn-ghost">What's included</a>
+</header>
+
+<section class="wrap" id="foundation">
+  <div class="kicker">The foundation</div>
+  <h2>Built on regulated white-label rails — live today.</h2>
+  <p class="sub">No development. No licensing hunt. The entire back office already exists and is live.</p>
+  <div class="grid">
+    <div class="box"><h3>Regulated wallet &amp; KYC</h3><p>Onboarding, identity verification and compliance handled by the platform — your customers are onboarded in minutes under existing frameworks.</p></div>
+    <div class="box"><h3>USDT deposit infrastructure</h3><p>Every user and merchant gets an instant USDT (TRON / TRC-20) deposit address. Incoming transfers are detected on-chain in <b>1–2 seconds</b>.</p></div>
+    <div class="box"><h3>Tokenised card issuance</h3><p>Virtual Mastercard provisioned to <b>Apple Pay and Google Pay</b> — spendable at any of 100M+ Mastercard terminals worldwide, online and in-app.</p></div>
+    <div class="box"><h3>Simple economics</h3><p>One commercial lever: a <b>4% fee on deposits</b>. No monthly fees, no hardware, no PCI costs. Crypto payments are final — <b>no chargebacks</b>, ever.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="stack">
+  <div class="kicker">The KLYVE layer</div>
+  <h2>You don't just get rails. You get a finished go-to-market machine.</h2>
+  <p class="sub">Everything below is already built, branded, and deployable — partners launch with a full toolkit, not a blank app.</p>
+  <div class="grid">
+    <div class="box plain"><h3 style="color:var(--emerald);">Consumer proposition</h3><ul>
+      <li><b>"Spend crypto anywhere"</b> — deposit USDT from any wallet, tap to pay in seconds</li>
+      <li><b>Stable balance</b> — USDT pegged to the dollar, no volatility at checkout</li>
+      <li><b>No bank required</b> — no credit checks, open to the underbanked</li>
+      <li><b>Remittance story</b> — send value home at a fraction of agent fees</li>
+    </ul></div>
+    <div class="box plain"><h3 style="color:var(--emerald);">Merchant proposition</h3><ul>
+      <li><b>Zero-integration acceptance</b> — the wallet address is the payment gateway</li>
+      <li><b>No chargebacks</b> — final settlement, goods paid = sale kept</li>
+      <li><b>Global customers</b> — anyone with USDT can pay, no category restrictions</li>
+      <li><b>Instant cash flow</b> — settlement in ~2 seconds, spendable immediately</li>
+    </ul></div>
+    <div class="box plain"><h3 style="color:var(--emerald);">Built marketing assets</h3><ul>
+      <li><b>Merchant Pay Calculator</b> — instant USDT quotes with fee gross-up and QR</li>
+      <li><b>Fee Savings Calculator</b> — shows merchants their true card-processing cost</li>
+      <li><b>Remittance Calculator</b> — 8 corridors, compares Western Union / MoneyGram / banks</li>
+      <li><b>"The Open Loop" campaign</b> — the differentiator as a shareable animated visual</li>
+    </ul></div>
+    <div class="box plain"><h3 style="color:var(--emerald);">Growth engine</h3><ul>
+      <li><b>PayMe Page Generator</b> — anyone can mint a personal payment page in a minute; every page recruits the next user</li>
+      <li><b>Landing page suite</b> — merchant, consumer and segment variants, ready to host</li>
+      <li><b>Viral loop built in</b> — every QR, page and quote carries the KLYVE brand onward</li>
+    </ul></div>
+  </div>
+</section>
+
+<section class="wrap" id="model">
+  <div class="kicker">Revenue model</div>
+  <h2>Four streams, one platform.</h2>
+  <p class="sub">Partners earn across every way value moves through the loop.</p>
+  <div class="rev">
+    <div class="box"><div class="n">4%</div><div class="l">Deposit fee on every load-up — shared with the partner</div></div>
+    <div class="box"><div class="n">Card</div><div class="l">Interchange on every tap, online and in-store</div></div>
+    <div class="box"><div class="n">FX</div><div class="l">Spread on stablecoin-to-local-currency conversions</div></div>
+    <div class="box"><div class="n">B2B</div><div class="l">Future lines: merchant subscriptions, settlement services</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="tiers">
+  <div class="kicker">Structure</div>
+  <h2>Two ways to own a territory.</h2>
+  <p class="sub">Exclusive rights, defined by geography, with support scaled to ambition.</p>
+  <div class="tiers">
+    <div class="tier">
+      <h3>Regional Partner</h3>
+      <div class="who">Cities / provinces · the agile entry route</div>
+      <ul>
+        <li>Exclusive rights in defined region</li>
+        <li>Full software stack &amp; brand kit</li>
+        <li>Marketing assets, localised for you</li>
+        <li>Revenue share on all four streams</li>
+        <li>Training &amp; launch support</li>
+      </ul>
+    </div>
+    <div class="tier gold">
+      <h3>National Master Partner</h3>
+      <div class="who">Whole country · the flagship appointment</div>
+      <ul>
+        <li>Exclusive national rights</li>
+        <li>Authority to appoint sub-regions</li>
+        <li>Priority product roadmap input</li>
+        <li>Dedicated success manager</li>
+        <li>Enhanced revenue share &amp; terms</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="kicker">The partner profile</div>
+  <h2>Who thrives with KLYVE?</h2>
+  <p class="sub"></p>
+  <div class="grid">
+    <div class="box"><h3>Distribution &amp; marketing groups</h3><p>Teams with reach into freelancers, traders, diaspora communities and small merchants — the audiences who feel the pain of card fees and remittance costs first.</p></div>
+    <div class="box"><h3>Payments industry veterans</h3><p>Former ISO, PSP or remittance operators who know merchant acquisition and want their own brand on modern rails — without rebuilding the stack.</p></div>
+    <div class="box"><h3>Fintech entrepreneurs</h3><p>Founders who want a live product on day one: regulated wallet, card issuance and instant settlement already working — the moat is distribution, and that's what you own.</p></div>
+    <div class="box"><h3>Community leaders</h3><p>Trusted voices in trading, gaming or creator communities who can seed the PayMe generator and open-loop story organically.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="kicker">Why now</div>
+  <h2>The window is the loop itself.</h2>
+  <p class="sub"></p>
+  <div class="grid">
+    <div class="box"><h3>Competitors are closed loops</h3><p>Coinbase, Crypto.com and Revolut cards all trap value inside their own ecosystems. KLYVE is the open loop — value in from any wallet, out at any terminal. First mover in most markets.</p></div>
+    <div class="box"><h3>Demand already exists</h3><p>Millions already hold USDT and need somewhere to spend it; merchants are drowning in card fees and chargebacks. The product doesn't create demand — it finally serves it.</p></div>
+    <div class="box"><h3>Costs of entry are zero-code</h3><p>A territory launch used to mean years and millions in licensing and development. Partners start with a finished platform and a finished marketing kit.</p></div>
+    <div class="box"><h3>Territories are finite</h3><p>Exclusive rights mean one partner per region. Each appointment closes the map a little further for everyone else.</p></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cta" id="apply">
+    <h2>Territories are being appointed now.</h2>
+    <p>Request the territory information pack: economics, support terms, and the launch playbook for your market.</p>
+    <a href="mailto:partners@klyve.example?subject=KLYVE%20Territory%20Enquiry" class="btn">Request territory pack</a>
+    <a href="#" class="btn-ghost">Book an introductory call</a>
+  </div>
+</div>
+
+<p class="disc">This document is a commercial summary for discussion purposes only. It does not constitute an offer, franchise disclosure document, or financial promotion. All figures, fee shares and territorial terms are indicative and subject to due diligence, contract, and applicable local licensing and regulatory requirements in each jurisdiction. Revenues are not guaranteed.</p>
+
+<footer>
+  <div class="wrap">© 2026 KLYVE — The open loop. Powered by regulated white-label payment infrastructure. Payments on the TRON network (TRC-20).</div>
+</footer>
+
+
+<div style="max-width:900px;margin:0 auto;padding:28px 24px;text-align:center;border-top:1px solid #334155;">
+  <div style="display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;font-size:13px;">
+    <a href="index.html" style="color:#94A3B8;text-decoration:none;">Merchants</a>
+    <a href="spend-crypto.html" style="color:#94A3B8;text-decoration:none;">Spend crypto anywhere</a>
+    <a href="remittance.html" style="color:#94A3B8;text-decoration:none;">Send money home</a>
+    <a href="fee-savings.html" style="color:#94A3B8;text-decoration:none;">Merchant fee savings</a>
+    <a href="merchant-calculator.html" style="color:#94A3B8;text-decoration:none;">Merchant pay calculator</a>
+    <a href="payme-generator.html" style="color:#94A3B8;text-decoration:none;">PayMe generator</a>
+    <a href="open-loop.html" style="color:#94A3B8;text-decoration:none;">The open loop</a>
+    <a href="franchise.html" style="color:#94A3B8;text-decoration:none;">Franchise opportunity</a>
+  </div>
+</div>
+</body>
+</html>
